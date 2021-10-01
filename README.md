@@ -20,6 +20,16 @@ Not final. Feel free to add more files if you need to. Just providing a base lin
 
 ### Back-end
 
+##### Storing Data
+1. Receive input from frontend
+1. Flask processing data and pass to **psycopg2**
+1. Store in database
+
+##### Fetching Data
+1. Using Python library **psycopg2** to fetch data from database
+1. Store fetched data into list
+1. Pass data in Flask and rendering data to frontend
+
 
 
 
