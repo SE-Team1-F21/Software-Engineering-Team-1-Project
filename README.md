@@ -49,6 +49,7 @@ The form "submit" button in `splash.html` should generate the `game.html` page.
 1. Pass data in Flask and rendering data to frontend
 
 
-
+### Flow
+![flow](flow.png)
 
 
