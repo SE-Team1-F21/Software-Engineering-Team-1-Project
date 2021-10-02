@@ -1,0 +1,83 @@
+body {
+    background-color: black;
+    overflow: hidden;
+}
+
+h1 {
+    color: rgba(124, 115, 255, 0.781);
+    text-align: center;
+}
+
+h2 {
+    position: relative;
+    bottom: 15px;
+    color: rgba(245, 245, 245, 0.445);
+}
+
+h3 {
+    position: relative;
+    text-align: center;
+    bottom: 15px;
+    color: rgb(26, 236, 89);
+}
+
+h4 {
+    position: absolute;
+    color: rgb(109, 109, 109);
+    left: 35%;    
+    bottom: -2.5vh;
+    font-size: x-large;
+}
+
+.square {
+    position: relative;
+    left: 60vh;
+    height: 70vh;
+    width: 395px;
+    background-color: rgb(88, 29, 29);
+}
+.square2 {
+    position: absolute;
+    top: 8.5vh;
+    left: calc(60vh + 403px);
+    height: 70vh;
+    width: 395px;
+    background-color: rgb(29, 49, 23);
+}
+.empty-square{
+    position: relative;
+    width: 50%;
+    height: 35px;
+    left: 25%;
+    background-color: rgba(255, 255, 255, 0);
+    border-style: solid;
+    border-width: 2px;
+    border-color: rgba(211, 211, 211, 0.445);
+}
+
+.control-panel {
+    position: absolute;
+    left: 25%;
+    bottom: 130px;
+}
+.button-square{
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    left: 0;
+    
+    background-color: rgba(255, 255, 255, 0);
+    border-style: solid;
+    border-width: 2px;
+    border-color: rgb(211, 211, 211);
+}
+
+.footer {
+    
+    position: absolute;
+    width: 100%;
+    height: 40px;
+    left: 0vh;
+    bottom: 0vh;
+    background-color: rgb(230, 230, 230);
+}
