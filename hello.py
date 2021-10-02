@@ -4,6 +4,18 @@ from flask import render_template
 
 
 app = Flask(__name__)
-@app.route('/login')
-def hello_world():
-    return render_template('screen.html')
+
+@app.route('/splash', methods=['GET', 'POST'])
+def splash():
+    return render_template('splash.html')
+
+@app.route('/game', methods=['GET', 'POST'])
+def game():
+    if request.method == 'POST':
+        return render_template('game.html')
+
+
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
