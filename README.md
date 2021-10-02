@@ -12,11 +12,29 @@
 # Sprint I
 ### Front-end
 Splash screen and player menu implementation, where each (for now) is contained within two html files.
->screen.html for splash
+>splash.html for splash
 
->players.html for game menu
+>game.html for game menu
 
-Not final. Feel free to add more files if you need to. Just providing a base line.
+Not final. Feel free to add more files if you need to. Just providing a base line
+
+These files are contained within the "templates" folder. This is necessary for communicating with flask for the backend
+
+The form "submit" button in `splash.html` should generate the `game.html` page.
+
+### Instructions for running Flask
+1. Install flask if it's not already installed 
+   ```
+   pip3 install Flask
+   ```
+2. Terminal commands for getting flask to run
+   ```
+   export FLASK_APP=main
+   flask run
+   ```
+   
+
+
 
 ### Back-end
 
