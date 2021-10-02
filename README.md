@@ -31,6 +31,7 @@ Not final. Feel free to add more files if you need to. Just providing a base lin
 1. Pass data in Flask and rendering data to frontend
 
 
-
+### Flow
+![flow](flow.png)
 
 
