@@ -26,6 +26,8 @@ def submit():
 
         dataReply = {'this':'works'}
         return jsonify(dataReply)
+    
+    
 @app.route('/red_submit', methods = ['GET','POST'])
 def submit_2():
     if request.method == 'POST':
