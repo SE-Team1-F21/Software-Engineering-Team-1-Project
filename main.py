@@ -15,6 +15,10 @@ def game():
     if request.method == 'GET':
         return render_template('playerEntry.html')
 
+@app.route('/submit', methods = ['GET','POST'])
+def submit():
+    if request.method == 'GET':
+        return render_template('splash.html')
 
 
 

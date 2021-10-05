@@ -48,6 +48,33 @@ The form "submit" button in `splash.html` should generate the `game.html` page.
 1. Store fetched data into list
 1. Pass data in Flask and rendering data to frontend
 
+### Connecting Front-end to back-end
+CSS needed slight adjustment for flask to generate a dynamic webpage using CSS. According to the documentation, to generate URLs for static files, use the special 'static' endpoint name
+```
+url_for('static', filename='style.css')
+```
+The file has to be stored on the filesystem as ```static/style.css```
+
+The authentication views and templates work, but they look very plain right now. Some CSS can be added to add style
+to the HTML layout you constructed. The style won’t change, so it’s a static file rather than a template
+
+Flask automatically adds a static view that takes a path relative to the flaskr/static directory and serves it.
+The base.html template already has a link to the style.css file:
+
+```
+{{ url_for('static', filename='style.css') }}
+```
+As such the rel attribute for link had to be changed to
+```
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+```
+**Though this produced a window size error**
+
+
+
+
+
+
 
 ### Flow
 ![flow](flow.png)

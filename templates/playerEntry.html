@@ -4,6 +4,21 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">    
     </head>
 
+    <script>
+    
+    // function getData()
+    // {
+    //     form_ID = document.getElementsByClassName("formID")
+    //     formName = document.getElementsByClassName("formID")
+
+    // }
+    
+
+    </script>
+
+
+
+
     <body>
         
         <h1>
@@ -15,28 +30,28 @@
                     RED TEAM
                 </h2>
             </div>
-            <button type="button" onclick="testFunction()"  style="position: relative; left: 318px; top: -21px;">Submit</button>
+            <button type="button" onclick="testFunction()" action ='/submit' style="position: relative; left: 318px; top: -21px;">Submit</button>
             <form>
-                <input type="text" id="redID1" name="redID1" class="formID"><br>
-                <input type="text" id="redID2" name="redID2" class="formID"><br>
-                <input type="text" id="redID3" name="redID3" class="formID"><br>
-                <input type="text" id="redID4" name="redID4" class="formID"><br>
-                <input type="text" id="redID5" name="redID5" class="formID"><br>
-                <input type="text" id="redID6" name="redID6" class="formID"><br>
-                <input type="text" id="redID7" name="redID7" class="formID"><br>
-                <input type="text" id="redID8" name="redID8" class="formID"><br>
-                <input type="text" id="redID9" name="redID9" class="formID"><br>
-                <input type="text" id="redID10" name="redID10" class="formID"><br>
-                <input type="text" id="redID11" name="redID11" class="formID"><br>
-                <input type="text" id="redID12" name="redID12" class="formID"><br>
-                <input type="text" id="redID13" name="redID13" class="formID"><br>
-                <input type="text" id="redID14" name="redID14" class="formID"><br>
-                <input type="text" id="redID15" name="redID15" class="formID"><br>
-                <input type="text" id="redID16" name="redID16" class="formID"><br>
-                <input type="text" id="redID17" name="redID17" class="formID"><br>
-                <input type="text" id="redID18" name="redID18" class="formID"><br>
-                <input type="text" id="redID19" name="redID19" class="formID"><br>
-                <input type="text" id="redID20" name="redID20" class="formID"><br>
+                <input type="text" id="redID1" name="redID1" class="formID" value =""><br>
+                <input type="text" id="redID2" name="redID2" class="formID" value =""><br>
+                <input type="text" id="redID3" name="redID3" class="formID" value =""><br>
+                <input type="text" id="redID4" name="redID4" class="formID" value =""><br>
+                <input type="text" id="redID5" name="redID5" class="formID" value =""><br>
+                <input type="text" id="redID6" name="redID6" class="formID" value=""><br>
+                <input type="text" id="redID7" name="redID7" class="formID" value=""><br>
+                <input type="text" id="redID8" name="redID8" class="formID" value=""><br>
+                <input type="text" id="redID9" name="redID9" class="formID" value=""><br>
+                <input type="text" id="redID10" name="redID10" class="formID" value=""><br>
+                <input type="text" id="redID11" name="redID11" class="formID" value=""><br>
+                <input type="text" id="redID12" name="redID12" class="formID" value=""><br>
+                <input type="text" id="redID13" name="redID13" class="formID" value=""><br>
+                <input type="text" id="redID14" name="redID14" class="formID" value=""><br>
+                <input type="text" id="redID15" name="redID15" class="formID" value=""><br>
+                <input type="text" id="redID16" name="redID16" class="formID" value=""><br>
+                <input type="text" id="redID17" name="redID17" class="formID" value=""><br>
+                <input type="text" id="redID18" name="redID18" class="formID" value=""><br>
+                <input type="text" id="redID19" name="redID19" class="formID" value=""><br>
+                <input type="text" id="redID20" name="redID20" class="formID" value=""><br>
             </form>
             <form style="position: relative; top: -20px;">
                 <input type="text" id="redName1" name="redName1" class="formName"><br>
@@ -153,7 +168,46 @@
 
     <script>
         function testFunction() {
-            alert("Submit first team");
+
+            //XMLHttpRequest Object
+            request = new XMLHttpRequest();
+            /*
+            XMLHttpRequest.open(method, url[, async[, user[, password]]])
+            */
+         
+
+
+            form_ID = document.getElementsByClassName("formID")
+            formName = document.getElementsByClassName("formName")
+           
+            //form_ID[i]['value']
+            //formName[i]['value']
+
+            var ID = []
+            var value = []
+            for(let i = 0; i<form_ID.length;i++)
+            {
+                if (form_ID[i].value != "")
+                {
+                    ID.push(form_ID[i]['value'])
+                    value.push(formName[i]['value'])
+                }
+            }
+            var result = {};
+            ID.forEach((key, i) => result[key] = value[i]);
+            dataSend = JSON.stringify(result)
+            xml.send(dataSend)
+
+
+
+            // console.log(ID)
+            // console.log(value)
+            // request.open('GET','/submit')
+
+            //form_ID[i]['value']
+            //formName[i]['value']
+
+            //alert("Submit first team");
         }
         function testFunction2() {
             alert("Submit second team");
