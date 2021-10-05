@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">    
+    </head>
+
+    <script>
+    
+    // function getData()
+    // {
+    //     form_ID = document.getElementsByClassName("formID")
+    //     formName = document.getElementsByClassName("formID")
+
+    // }
+    
+
+    </script>
+
+
+
+
+    <body>
+        
+        <h1>
+            Edit Current Game
+        </h1>
+        <div class="square">
+            <div class="empty-square">
+                <h2>
+                    RED TEAM
+                </h2>
+            </div>
+            <button type="button" onclick="testFunction()" action ='/red_submit' style="position: relative; left: 318px; top: -21px;">Submit</button>
+            <form>
+                <input type="text" id="redID1" name="redID1" class="formID" value =""><br>
+                <input type="text" id="redID2" name="redID2" class="formID" value =""><br>
+                <input type="text" id="redID3" name="redID3" class="formID" value =""><br>
+                <input type="text" id="redID4" name="redID4" class="formID" value =""><br>
+                <input type="text" id="redID5" name="redID5" class="formID" value =""><br>
+                <input type="text" id="redID6" name="redID6" class="formID" value=""><br>
+                <input type="text" id="redID7" name="redID7" class="formID" value=""><br>
+                <input type="text" id="redID8" name="redID8" class="formID" value=""><br>
+                <input type="text" id="redID9" name="redID9" class="formID" value=""><br>
+                <input type="text" id="redID10" name="redID10" class="formID" value=""><br>
+                <input type="text" id="redID11" name="redID11" class="formID" value=""><br>
+                <input type="text" id="redID12" name="redID12" class="formID" value=""><br>
+                <input type="text" id="redID13" name="redID13" class="formID" value=""><br>
+                <input type="text" id="redID14" name="redID14" class="formID" value=""><br>
+                <input type="text" id="redID15" name="redID15" class="formID" value=""><br>
+                <input type="text" id="redID16" name="redID16" class="formID" value=""><br>
+                <input type="text" id="redID17" name="redID17" class="formID" value=""><br>
+                <input type="text" id="redID18" name="redID18" class="formID" value=""><br>
+                <input type="text" id="redID19" name="redID19" class="formID" value=""><br>
+                <input type="text" id="redID20" name="redID20" class="formID" value=""><br>
+            </form>
+            <form style="position: relative; top: -20px;">
+                <input type="text" id="redName1" name="redName1" class="formName"><br>
+                <input type="text" id="redName2" name="redName2" class="formName"><br>
+                <input type="text" id="redName3" name="redName3" class="formName"><br>
+                <input type="text" id="redName4" name="redName4" class="formName"><br>
+                <input type="text" id="redName5" name="redName5" class="formName"><br>
+                <input type="text" id="redName6" name="redName6" class="formName"><br>
+                <input type="text" id="redName7" name="redName7" class="formName"><br>
+                <input type="text" id="redName8" name="redName8" class="formName"><br>
+                <input type="text" id="redName9" name="redName9" class="formName"><br>
+                <input type="text" id="redName10" name="redName10" class="formName"><br>
+                <input type="text" id="redName11" name="redName11" class="formName"><br>
+                <input type="text" id="redName12" name="redName12" class="formName"><br>
+                <input type="text" id="redName13" name="redName13" class="formName"><br>
+                <input type="text" id="redName14" name="redName14" class="formName"><br>
+                <input type="text" id="redName15" name="redName15" class="formName"><br>
+                <input type="text" id="redName16" name="redName16" class="formName"><br>
+                <input type="text" id="redName17" name="redName17" class="formName"><br>
+                <input type="text" id="redName18" name="redName18" class="formName"><br>
+                <input type="text" id="redName19" name="redName19" class="formName"><br>
+                <input type="text" id="redName20" name="redName20" class="formName"><br>
+            </form>
+        </div>
+        <div class="square2">
+            <div class="empty-square">
+                <h2>
+                    GREEN TEAM
+                </h2>
+            </div>
+            <button type="button" onclick="testFunction2()"  style="position: relative; left: 318px; top: -21px;">Submit</button>
+            <form>
+                <input type="text" id="greenID1" name="greenID1" class="formID_2"><br>
+                <input type="text" id="greenID2" name="greenID2" class="formID_2"><br>
+                <input type="text" id="greenID3" name="greenID3" class="formID_2"><br>
+                <input type="text" id="greenID4" name="greenID4" class="formID_2"><br>
+                <input type="text" id="greenID5" name="greenID5" class="formID_2"><br>
+                <input type="text" id="greenID6" name="greenID6" class="formID_2"><br>
+                <input type="text" id="greenID7" name="greenID7" class="formID_2"><br>
+                <input type="text" id="greenID8" name="greenID8" class="formID_2"><br>
+                <input type="text" id="greenID9" name="greenID9" class="formID_2"><br>
+                <input type="text" id="greenID10" name="greenID10" class="formID_2"><br>
+                <input type="text" id="greenID11" name="greenID11" class="formID_2"><br>
+                <input type="text" id="greenID12" name="greenID12" class="formID_2"><br>
+                <input type="text" id="greenID13" name="greenID13" class="formID_2"><br>
+                <input type="text" id="greenID14" name="greenID14" class="formID_2"><br>
+                <input type="text" id="greenID15" name="greenID15" class="formID_2"><br>
+                <input type="text" id="greenID16" name="greenID16" class="formID_2"><br>
+                <input type="text" id="greenID17" name="greenID17" class="formID_2"><br>
+                <input type="text" id="greenID18" name="greenID18" class="formID_2"><br>
+                <input type="text" id="greenID19" name="greenID19" class="formID_2"><br>
+                <input type="text" id="greenID20" name="greenID20" class="formID_2"><br>
+            </form>
+            <form style="position: relative; top: -20px;">
+                <input type="text" id="greenName1" name="greenName1" class="formName_2"><br>
+                <input type="text" id="greenName2" name="greenName2" class="formName_2"><br>
+                <input type="text" id="greenName3" name="greenName3" class="formName_2"><br>
+                <input type="text" id="greenName4" name="greenName4" class="formName_2"><br>
+                <input type="text" id="greenName5" name="greenName5" class="formName_2" ><br>
+                <input type="text" id="greenName6" name="greenName6" class="formName_2"><br>
+                <input type="text" id="greenName7" name="greenName7" class="formName_2"><br>
+                <input type="text" id="greenName8" name="greenName8" class="formName_2"><br>
+                <input type="text" id="greenName9" name="greenName9" class="formName_2"><br>
+                <input type="text" id="greenName10" name="greenName10" class="formName_2"><br>
+                <input type="text" id="greenName11" name="greenName11" class="formName_2"><br>
+                <input type="text" id="greenName12" name="greenName12" class="formName_2"><br>
+                <input type="text" id="greenName13" name="greenName13" class="formName_2"><br>
+                <input type="text" id="greenName14" name="greenName14" class="formName_2"><br>
+                <input type="text" id="greenName15" name="greenName15" class="formName_2"><br>
+                <input type="text" id="greenName16" name="greenName16" class="formName_2"><br>
+                <input type="text" id="greenName17" name="greenName17" class="formName_2"><br>
+                <input type="text" id="greenName18" name="greenName18" class="formName_2"><br>
+                <input type="text" id="greenName19" name="greenName19" class="formName_2"><br>
+                <input type="text" id="greenName20" name="greenName20" class="formName_2"><br>
+            </form>
+        </div>
+        
+        <div class="control-panel">
+            <div class="button-square">
+                <h3>F1 <br> Edit Game</h3>
+            </div>
+            <div class="button-square" style="left: 90px;">
+                <h3>F2 <br> Game Parameters</h3>
+            </div>
+            <div class="button-square" style="left: 180px;">
+                <h3>F3 <br> Start Game</h3>
+            </div>
+
+            <div class="button-square" style="left: 360px;">
+                <h3>F5 <br> PreEntered Games</h3>
+            </div>
+
+            <div class="button-square" style="left: 540px;">
+                <h3>F7</h3>
+            </div>
+            <div class="button-square" style="left: 630px;">
+                <h3>F8 <br> View Game</h3>
+            </div>
+
+            <div class="button-square" style="left: 810px;">
+                <h3>F10 <br> Flick Sync</h3>
+            </div>
+
+            <div class="button-square" style="left: 990px;">
+                <h3>F12 <br> Clear Game</h3>
+            </div>
+        </div>
+        
+        <div class="footer"></div>
+        <h4>
+            Del to Delete Player, Ins to Manually Insert, or edit codename
+        </h4>
+    </body>
+
+    <script>
+        function testFunction() {
+
+            //XMLHttpRequest Object
+            request = new XMLHttpRequest();
+           
+            request.open("POST",'/red_submit',true)
+            request.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+            request.onload = function(){
+                var dataReply = JSON.parse(this.responseText)
+            };
+
+            form_ID = document.getElementsByClassName("formID")
+            formName = document.getElementsByClassName("formName")
+           
+
+            var ID = []
+            var value = []
+            for(let i = 0; i<form_ID.length;i++)
+            {
+                if (form_ID[i].value != "")
+                {
+                    ID.push(form_ID[i]['value'])
+                    value.push(formName[i]['value'])
+                }
+            }
+        
+            var result = {};
+            ID.forEach((key, i) => result[key] = value[i]);
+            dataSend = JSON.stringify(result)
+            console.log(dataSend)
+            request.send(dataSend)
+
+        }
+        function testFunction2() {
+            //XMLHttpRequest Object
+           request = new XMLHttpRequest();
+           
+           request.open("POST",'/green_submit',true)
+           request.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+           request.onload = function(){
+               var dataReply = JSON.parse(this.responseText)
+               };
+
+           form_ID_2 = document.getElementsByClassName("formID_2")
+           formName_2 = document.getElementsByClassName("formName_2")
+          
+
+           var ID = []
+           var value = []
+           for(let i = 0; i<form_ID.length;i++)
+           {
+               if (form_ID[i].value != "")
+               {
+                   ID.push(form_ID[i]['value'])
+                   value.push(formName[i]['value'])
+               }
+           }
+       
+           var result = {};
+           ID.forEach((key, i) => result[key] = value[i]);
+           dataSend = JSON.stringify(result)
+           console.log(dataSend)
+           request.send(dataSend)
+
+        }
+    </script>
+    
+</html>
