@@ -5,14 +5,15 @@ from flask import render_template
 
 app = Flask(__name__)
 
-@app.route('/splash')
-def splash():
+@app.route("/")
+def home():
     return render_template('splash.html')
+
 
 @app.route('/game', methods=['GET', 'POST'])
 def game():
     if request.method == 'GET':
-        return render_template('game.html')
+        return render_template('playerEntry.html')
 
 
 
