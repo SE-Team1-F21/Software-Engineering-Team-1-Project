@@ -71,12 +71,22 @@ As such the rel attribute for link had to be changed to
 **Though this produced a window size error**
 
 
+### **middleHandler Usage**
+This python script can save and update the postgresql database. This phase, developer will need to manually modify the python code in order to insert the desire {id, codeName} pair to the database.
 
-
+### **Run Script**
+If you are using heroku for database hosting, copy and paste the credential information upon running this script.
+```
+python middleHandler.py user password host port database
+```
 
 
 
 ### Flow
 ![flow](flow.png)
+
+
+
+
 
 
