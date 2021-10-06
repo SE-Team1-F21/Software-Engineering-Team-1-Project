@@ -1,13 +1,21 @@
 import psycopg2
+import sys
 
 #TODO: fetching data from database and pass to flask
+#focusing on id and codename
 
-user = 'leemdipikfjyvk'
-password = 'b02a82e4e956bd6b2308b373258f48e20d291ac795fbea568105ef238cd5a324'
-host = 'ec2-23-22-191-232.compute-1.amazonaws.com'
-port = '5432'
-database = 'd8c1130jk9t7t2'
+user = sys.argv[1]
+password = sys.argv[2]
+host = sys.argv[3]
+port = sys.argv[4]
+database = sys.argv[5]
 
+
+print(user)
+print(password)
+print(host)
+print(port)
+print(database)
 
 try:
     connection = psycopg2.connect(
@@ -21,8 +29,8 @@ try:
     cursor = connection.cursor()
     
     ###inserting id and name for now
-    insert_query = """INSERT INTO player (id, first_name, last_name) VALUES (%s, %s, %s)"""
-    test_to_insert = (6, 'test_first_name', 'test_last_name')
+    insert_query = """INSERT INTO player (id, test_codeName) VALUES (%s, %s)"""
+    test_to_insert = (7, 'test_code_name_1')
     cursor.execute(insert_query, test_to_insert)
     connection.commit()
     print("Inserted this data successfully")
