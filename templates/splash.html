@@ -1,13 +1,68 @@
 <!DOCTYPE html>
 <html>
+  <style>
+    #progress{
+      width: 100%;
+      background-color: rgba(32, 30, 30, 0.61);
+    }
+
+    #bar{
+      width: 1%;
+      height: 30px;
+      background-color: #1260d4;
+
+
+    }
+  </style>
+
   <title>Team1</title>
-  <body>
-    <div style="text-align: center;">
-      <h1 style="font-size: 100px;">Splash</h1>
-      <form method="GET" action="/game">
-        <input type="submit" name="submit" value="start_playing"/>
+
+  <body bgcolor="black"; style="background-image: url('/static/logo_resized.jpg'); background-repeat: no-repeat; background-size: cover;" onload="moveBar()">
+    
+    <h1 style="margin-bottom: 700px;" ,></h1>
+      <form method="GET" action="/game" style="text-align: center;">
+        <input type="submit" name="submit" value="Start"/>
       </form>
-  </div>
+      
+    <br>
+    <div id= "progress">
+      <div id="bar"></div>
+    </div>
+
+    <script>
+      var i = 0;
+      
+      function moveBar()
+      {
+        if (i == 0)
+        {
+          i = 1;
+          var elem = document.getElementById("bar");
+          var width = 1;
+          var id = setInterval(frame, 10);
+          function frame()
+          {
+            if (width >= 100)
+            {
+              clearInterval(id);
+              i = 0;
+            } 
+            else
+            {
+              width++
+              elem.style.width = width + "%";
+            }
+            
+          }
+        }
+      }
+      
+    
+      </script>
   </body>
+
+
+
+
 </html>
  
