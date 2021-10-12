@@ -3,6 +3,7 @@ from flask import request
 from flask import render_template
 from flask import jsonify
 from flask.signals import request_started
+from middleHandler import connection
 
 app = Flask(__name__)
 
@@ -20,10 +21,11 @@ def game():
 @app.route('/red_submit', methods = ['GET','POST'])
 def submit():
     if request.method == 'POST':
-        print ('route has been met?')
+        #print ('route has been met?')
         dataResult = request.get_json(force=True)
-        print (dataResult)
-
+        print (type(dataResult))
+        for id, codeName in dataResult.items():
+            connection(id, codeName)
         dataReply = {'this':'works'}
         return jsonify(dataReply)
     
@@ -33,7 +35,7 @@ def submit_2():
     if request.method == 'POST':
         print ('route has been met?')
         dataResult = request.get_json(force=True)
-        print (dataResult)
+        #print (dataResult)
 
         dataReply = {'this':'works'}
         return jsonify(dataReply)
