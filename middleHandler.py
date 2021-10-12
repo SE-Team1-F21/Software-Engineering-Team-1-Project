@@ -6,7 +6,7 @@ import sys
 #focusing on id and codename
 
 #Fetching credentials with json
-url_credentials = 'https://data.heroku.com/dataclips/vutwqwveweoamnjuykcracjwjyaw.json'
+url_credentials = ''
 
 data = requests.get(url_credentials).json()
 
