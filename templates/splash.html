@@ -20,9 +20,6 @@
   <body bgcolor="black"; style="background-image: url('/static/logo_resized.jpg'); background-repeat: no-repeat; background-size: cover;" onload="moveBar()">
     
     <h1 style="margin-bottom: 700px;" ,></h1>
-      <form method="GET" action="/game" style="text-align: center;">
-        <input type="submit" name="submit" value="Start"/>
-      </form>
       
     <br>
     <div id= "progress">
@@ -46,10 +43,11 @@
             {
               clearInterval(id);
               i = 0;
+              window.location.replace("http://127.0.0.1:5000/game")
             } 
             else
             {
-              width++
+              width++;
               elem.style.width = width + "%";
             }
             
