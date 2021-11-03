@@ -30,7 +30,7 @@
                     RED TEAM
                 </h2>
             </div>
-            <button type="button" onclick="testFunction()" action ='/red_submit' style="position: relative; left: 318px; top: -21px;">Submit</button>
+            <button type="button" onclick="redFunction()" action ='/red_submit' style="position: relative; left: 318px; top: -21px;">Submit</button>
             <form>
                 <input type="text" id="redID1" name="redID1" class="formID" value =""><br>
                 <input type="text" id="redID2" name="redID2" class="formID" value =""><br>
@@ -82,7 +82,7 @@
                     GREEN TEAM
                 </h2>
             </div>
-            <button type="button" onclick="testFunction2()"  style="position: relative; left: 318px; top: -21px;">Submit</button>
+            <button type="button" onclick="greenFunction()"  style="position: relative; left: 318px; top: -21px;">Submit</button>
             <form>
                 <input type="text" id="greenID1" name="greenID1" class="formID"><br>
                 <input type="text" id="greenID2" name="greenID2" class="formID"><br>
@@ -167,7 +167,7 @@
     </body>
 
     <script>
-        function testFunction() {
+        function redFunction() {
 
             //XMLHttpRequest Object
             request = new XMLHttpRequest();
@@ -180,10 +180,12 @@
 
             form_ID = document.getElementsByClassName("formID")
             formName = document.getElementsByClassName("formName")
+         
            
 
             var ID = []
             var value = []
+            var team =""
             for(let i = 0; i<form_ID.length;i++)
             {
                 if (form_ID[i].value != "")
@@ -195,12 +197,12 @@
         
             var result = {};
             ID.forEach((key, i) => result[key] = value[i]);
+    
             dataSend = JSON.stringify(result)
-            console.log(dataSend)
             request.send(dataSend)
 
         }
-        function testFunction2() {
+        function greenFunction() {
             //XMLHttpRequest Object
            request = new XMLHttpRequest();
            
@@ -216,6 +218,7 @@
 
            var ID = []
            var value = []
+    
            for(let i = 0; i<form_ID.length;i++)
            {
                if (form_ID[i].value != "")
@@ -228,7 +231,7 @@
            var result = {};
            ID.forEach((key, i) => result[key] = value[i]);
            dataSend = JSON.stringify(result)
-           console.log(dataSend)
+           console.log(typeof(dataSend))
            request.send(dataSend)
 
         }
