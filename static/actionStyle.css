@@ -1,0 +1,64 @@
+body {
+    background-color: black;
+    overflow: hidden;
+}
+
+.border-square{
+    position: absolute;
+    width: 60%;
+    height: 70%;
+    top: 50px;
+    left: 20%;
+    
+    background-color: rgba(255, 242, 59, 0);
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 15px;
+    border-color: rgb(252, 255, 53);
+}
+
+.border-square2{
+    position: relative;
+    width: calc(100% - 1px);
+    height: 50%;
+    top: 40%;
+    left: -1px;
+    
+    background-color: rgba(42, 95, 240, 0.74);
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 15px 15px 0px 0px;
+    border-color: rgb(252, 255, 53);
+}
+
+h2 {
+    position: absolute;
+    left: 10%;
+    top: 0px;
+    color: rgb(245, 245, 245);
+    font-size: 35px;
+}
+
+h3 {
+    position: absolute;
+    right: 15%;
+    bottom: -22px;
+    color: rgb(245, 245, 245);
+    font-size: 35px;
+}
+
+h4 {
+    position: absolute;
+    right: 10%;
+    top: -20px;
+    color: rgb(245, 245, 245);
+    font-size: 35px;
+}
+
+.hits {
+    position: absolute;
+    left: 6px;
+    top: 3px;
+    color: rgb(245, 245, 245);
+    font-size: 35px;
+}
