@@ -47,17 +47,20 @@ def submit():
 @app.route('/green_submit', methods = ['GET','POST'])
 def submit_2():
     if request.method == 'POST':
-        # playerInfo = []
-        # print ('route has been met?')
-        # dataResult = request.get_json(force=True)
-        # #print (dataResult)
-        # for i in dataResult.keys():
-        #     for j in dataResult.values():
-        #         playerInfo.append(i)
-        #         playerInfo.append(j)
-        # playerInfo.append('G')
-        # print(playerInfo)
-        # dataReply = {'this':'works'}
+        playerInfo = []
+        print ('route has been met?')
+        dataResult = request.get_json(force=True)
+        #print (dataResult)
+        for i in dataResult.keys():
+            for j in dataResult.values():
+                playerInfo.append(i)
+                playerInfo.append(j)
+        
+
+        ##playerInfo = [id,name,team_color]
+        playerInfo.append('G')
+        print(playerInfo)
+        dataReply = {'this':'works'}
         return jsonify(dataReply)
 
 @app.route('/action',methods=['GET', 'POST'])

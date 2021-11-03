@@ -30,7 +30,7 @@
                     RED TEAM
                 </h2>
             </div>
-            <button type="button" onclick="testFunction()" action ='/red_submit' style="position: relative; left: 318px; top: -21px;">Submit</button>
+            <button type="button" onclick="redFunction()" action ='/red_submit' style="position: relative; left: 318px; top: -21px;">Submit</button>
             <form>
                 <input type="text" id="redID1" name="redID1" class="redFormID" value =""><br>
                 <input type="text" id="redID2" name="redID2" class="redFormID" value =""><br>
@@ -82,7 +82,7 @@
                     GREEN TEAM
                 </h2>
             </div>
-            <button type="button" onclick="testFunction2()"  style="position: relative; left: 318px; top: -21px;">Submit</button>
+            <button type="button" onclick="greenFunction()"  style="position: relative; left: 318px; top: -21px;">Submit</button>
             <form>
                 <input type="text" id="greenID1" name="greenID1" class="greenFormID"><br>
                 <input type="text" id="greenID2" name="greenID2" class="greenFormID"><br>
@@ -195,6 +195,7 @@
         
             var result = {};
             ID.forEach((key, i) => result[key] = value[i]);
+            console.log(result)
             dataSend = JSON.stringify(result)
             console.log(dataSend)
             request.send(dataSend)
@@ -202,6 +203,7 @@
         }
         function greenFunction() {
             //XMLHttpRequest Object
+
            request = new XMLHttpRequest();
            
            request.open("POST",'/green_submit',true)
@@ -210,18 +212,19 @@
                var dataReply = JSON.parse(this.responseText)
                };
 
+    
            form_ID_2 = document.getElementsByClassName("greenFormID")
            formName_2 = document.getElementsByClassName("greenFormName")
           
 
            var ID = []
            var value = []
-           for(let i = 0; i<form_ID.length;i++)
+           for(let i = 0; i<form_ID_2.length;i++)
            {
-               if (form_ID[i].value != "")
+               if (form_ID_2[i].value != "")
                {
-                   ID.push(form_ID[i]['value'])
-                   value.push(formName[i]['value'])
+                   ID.push(form_ID_2[i]['value'])
+                   value.push(formName_2[i]['value'])
                }
            }
        
