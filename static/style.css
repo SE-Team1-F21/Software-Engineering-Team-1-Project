@@ -55,13 +55,26 @@ h4 {
     border-width: 2px;
     border-color: rgba(211, 211, 211, 0.445);
 }
-.formID {
+.redFormID {
     position: relative;
     top: -10px;
     width: 30%;
     left: 20%;
 }
-.formName {
+.redFormName {
+    position: relative;
+    top: -410px;
+    width: 40%;
+    left: 53%;
+}
+
+.greenFormID {
+    position: relative;
+    top: -10px;
+    width: 30%;
+    left: 20%;
+}
+.greenFormName {
     position: relative;
     top: -410px;
     width: 40%;
