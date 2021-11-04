@@ -7,6 +7,8 @@ body {
     position: absolute;
     width: 60%;
     height: 70%;
+    min-width: 700px;
+    min-height: 350px;
     top: 50px;
     left: 20%;
     
@@ -20,7 +22,7 @@ body {
 .border-square2{
     position: relative;
     width: calc(100% - 1px);
-    height: 50%;
+    height: calc(60% - 70px);
     top: 40%;
     left: -1px;
     
@@ -60,5 +62,21 @@ h4 {
     left: 6px;
     top: 3px;
     color: rgb(245, 245, 245);
+    font-size: 35px;
+}
+
+.score1 {
+    position: absolute;
+    left: calc(10% + 220px);
+    top: calc(40% - 50px);
+    color: rgb(245, 8, 8);
+    font-size: 35px;
+}
+
+.score2 {
+    position: absolute;
+    right: 15px;
+    top: calc(40% - 50px);
+    color: rgb(11, 241, 80);
     font-size: 35px;
 }
