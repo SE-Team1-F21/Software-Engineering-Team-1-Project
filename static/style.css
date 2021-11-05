@@ -4,8 +4,10 @@ body {
 }
 
 h1 {
+    position: relative;
     color: rgba(124, 115, 255, 0.781);
-    text-align: center;
+    top: 0px;
+    left: 42%;
 }
 
 h2 {
@@ -28,20 +30,24 @@ h4 {
     left: 35%;    
     bottom: -2.5vh;
     font-size: x-large;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .square {
-    position: relative;
-    left: 60vh;
-    height: 70vh;
+    position: absolute;
+    left: 29.7%;
+    height: 70%;
+    min-height: 500px;
     width: 395px;
     background-color: rgb(88, 29, 29);
 }
 .square2 {
     position: absolute;
-    top: 8.5vh;
-    left: calc(60vh + 403px);
-    height: 70vh;
+    
+    left: calc(29.7% + 395px);
+    height: 70%;
+    min-height: 500px;
     width: 395px;
     background-color: rgb(29, 49, 23);
 }
@@ -99,7 +105,6 @@ h4 {
 }
 
 .footer {
-    
     position: absolute;
     width: 100%;
     height: 40px;
