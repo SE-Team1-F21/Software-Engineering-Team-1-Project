@@ -11,7 +11,7 @@
     //     form_ID = document.getElementsByClassName("formID")
     //     formName = document.getElementsByClassName("formID")
 
-    //   
+    //   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> 
     
 
     </script>
@@ -30,8 +30,8 @@
                     RED TEAM
                 </h2>
             </div>
-            <button type="button" onclick="redFunction()" action ='/red_submit' style="position: relative; left: 318px; top: -21px;">Submit</button>
-            <form>
+            <button type="button" onclick="redFunction()" action ='/red_submit' class="submit">Submit</button>
+            <form class="blockID">
                 <input type="text" id="redID1" name="redID1" class="redFormID" value =""><br>
                 <input type="text" id="redID2" name="redID2" class="redFormID" value =""><br>
                 <input type="text" id="redID3" name="redID3" class="redFormID" value =""><br>
@@ -53,7 +53,7 @@
                 <input type="text" id="redID19" name="redID19" class="redFormID" value=""><br>
                 <input type="text" id="redID20" name="redID20" class="redFormID" value=""><br>
             </form>
-            <form style="position: relative; top: -20px;">
+            <form class="blockName">
                 <input type="text" id="redName1" name="redName1" class="redFormName"><br>
                 <input type="text" id="redName2" name="redName2" class="redFormName"><br>
                 <input type="text" id="redName3" name="redName3" class="redFormName"><br>
@@ -82,8 +82,8 @@
                     GREEN TEAM
                 </h2>
             </div>
-            <button type="button" onclick="greenFunction()"  style="position: relative; left: 318px; top: -21px;">Submit</button>
-            <form>
+            <button type="button" onclick="greenFunction()"  class="submit">Submit</button>
+            <form class="blockID">
                 <input type="text" id="greenID1" name="greenID1" class="greenFormID"><br>
                 <input type="text" id="greenID2" name="greenID2" class="greenFormID"><br>
                 <input type="text" id="greenID3" name="greenID3" class="greenFormID"><br>
@@ -105,7 +105,7 @@
                 <input type="text" id="greenID19" name="greenID19" class="greenFormID"><br>
                 <input type="text" id="greenID20" name="greenID20" class="greenFormID"><br>
             </form>
-            <form style="position: relative; top: -20px;">
+            <form class="blockName">
                 <input type="text" id="greenName1" name="greenName1" class="greenFormName"><br>
                 <input type="text" id="greenName2" name="greenName2" class="greenFormName"><br>
                 <input type="text" id="greenName3" name="greenName3" class="greenFormName"><br>
