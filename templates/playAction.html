@@ -57,15 +57,34 @@
                     Scooby hit Opus<br>Opus hit Scooby<br>Diego hit himself
                 </div>
             </div>
-            <h3>
-                Time Remaining: 
+            <h3 id = "timer">
+                Time Remaining: 30 Seconds
             </h3>
         </div>
     
     </body>
 
     <script>
-    		
+        seconds = 30
+    	var timer = setInterval(myCounter, 1000);
+
+        function myCounter()
+        {
+            document.getElementById("timer").innerHTML = "Time Remaining: " + seconds + " Seconds";
+            seconds --;
+            if(seconds < 0)
+            {
+                stopFunction();
+                document.getElementById("timer").innerHTML = "Time Remaining: NONE!";
+                
+            }
+        }
+
+        function stopFunction()
+        {
+            clearInterval(timer);
+        }
+
 		
     </script>
     

@@ -60,6 +60,9 @@ def submit_2():
         ##playerInfo = [id,name,team_color]
         playerInfo.append('G')
         print(playerInfo)
+        
+        for id, codeName in dataResult.items():
+            connection(id, codeName)
         dataReply = {'this':'works'}
         return jsonify(dataReply)
 

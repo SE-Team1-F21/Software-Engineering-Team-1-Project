@@ -6,25 +6,25 @@ import sys
 #focusing on id and codename
 
 #Fetching credentials with json
-url_credentials = 'https://data.heroku.com/dataclips/vutwqwveweoamnjuykcracjwjyaw.json'
+#url_credentials = 'https://data.heroku.com/dataclips/vutwqwveweoamnjuykcracjwjyaw.json'
 
-data = requests.get(url_credentials).json()
+#data = requests.get(url_credentials).json()
 
 credentials_list = []
-user = ''
-password = ''
-host = ''
-port = ''
-database = ''
+user = 'leemdipikfjyvk'
+password = 'b02a82e4e956bd6b2308b373258f48e20d291ac795fbea568105ef238cd5a324'
+host = 'ec2-23-22-191-232.compute-1.amazonaws.com'
+port = '5432'
+database = 'd8c1130jk9t7t2'
 
-for i in range(len(data['values'])):
-    credentials_list = data['values'][i]
+##for i in range(len(data['values'])):
+##    credentials_list = data['values'][i]
 
-user = credentials_list[0]
-password = credentials_list[1]
-host = credentials_list[2]
-port = credentials_list[3]
-database = credentials_list[4]
+##user = credentials_list[0]
+##password = credentials_list[1]
+##host = credentials_list[2]
+##port = credentials_list[3]
+##database = credentials_list[4]
 
 def connection(id, codeName):
     
