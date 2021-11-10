@@ -130,7 +130,19 @@ h5 {
     border-color: rgb(206, 61, 61);
 }
 
-.redNames {
+.redNameGroup {
+    position: absolute;
+    top: 0;
+    left: 10px;
+}
+
+.redScoreGroup {
+    position: absolute;
+    top: 0;
+    right: 10px;
+}
+
+.redList {
     position: relative;
     color: rgb(245, 8, 8);
     font-size: 35px;
@@ -149,7 +161,19 @@ h5 {
     border-color: rgb(154, 243, 112);
 }
 
-.greenNames {
+.greenNameGroup {
+    position: absolute;
+    top: 0;
+    left: 10px;
+}
+
+.greenScoreGroup {
+    position: absolute;
+    top: 0;
+    right: 10px;
+}
+
+.greenList {
     position: relative;
     color: rgb(11, 241, 80);
     font-size: 35px;
