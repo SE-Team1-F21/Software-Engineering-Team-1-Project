@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="{{ url_for('static', filename='actionStyle.css') }}">  
+        <link rel="stylesheet" href="{{ url_for('static', filename='actionStyle.css') }}">
     </head>
 
     <script>
-    
+
     // function getData()
     // {
     //     form_ID = document.getElementsByClassName("formID")
@@ -13,9 +13,9 @@
 
     // }
     // for style sheet:
-    // <link rel="stylesheet" href="{{ url_for('static', filename='actionStyle.css') }}">  
-      
-    
+    // <link rel="stylesheet" href="{{ url_for('static', filename='actionStyle.css') }}">
+
+
 
     </script>
 
@@ -27,11 +27,11 @@
             <div class="xp">XP</div>
             <div class="currentScores">Current Scores</div>
             <h2>
-                RED TEAM 
+                RED TEAM
             </h2>
             <div class="redScores">
                 <div class="redNameGroup">
-                    <div class="redList" id="rName1">Scobby</div>
+                    <div class="redList" id="rName1">Scooby</div>
                     <div class="redList" id="rName2">Diego</div>
                     <div class="redList" id="rName3"></div>
                     <div class="redList" id="rName4"></div>
@@ -130,7 +130,7 @@
             <div class="score2" id="greenScore">
                 400
             </div>
-            
+
             <div class=border-square2>
                 <h5>Current Game Action</h5>
                 <div class=hits>
@@ -141,7 +141,7 @@
                 Time Remaining: 30 Seconds
             </h3>
         </div>
-    
+
     </body>
 
     <script>
@@ -156,7 +156,7 @@
             {
                 stopFunction();
                 document.getElementById("timer").innerHTML = "Time Remaining: NONE!";
-                
+
             }
         }
 
@@ -165,7 +165,36 @@
             clearInterval(timer);
         }
 
-		
+
     </script>
-    
+
+    <script>/*
+        var req = new XMLHttpRequest();
+        req.responseType = 'json';
+        req.open('GET', 'https://data.heroku.com/dataclips/vutwqwveweoamnjuykcracjwjyaw.json', true);
+
+        req.onload  = function()
+        {
+            var jsonResponse = req.response;
+
+            //prints out entire database
+            //alert(jsonResponse['values']);
+            //alert(jsonResponse['values'][0]);
+            //alert(jsonResponse['values'][0][1]);
+            let counter = 1
+            for(let x = 1; x <= 10; x++)
+            {
+                document.getElementById("rName" + counter.toString()).innerHTML = jsonResponse['values'][x - 1][1];
+                counter++;
+            }
+            counter = 1;
+            for(let y = 11; y <= 20; y++)
+            {
+                document.getElementById("gName" + counter.toString()).innerHTML = jsonResponse['values'][y - 1][1];
+                counter++;
+            }
+        };
+        req.send(null);*/
+    </script>
+
 </html>
