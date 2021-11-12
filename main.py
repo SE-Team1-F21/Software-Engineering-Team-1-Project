@@ -18,6 +18,10 @@ def home():
 def game():
     if request.method == 'GET':
         print ("print should work")
+        with open("files/rednames.txt", "w") as fo:
+            fo.write("")
+        with open("files/greennames.txt", "w") as fo:
+            fo.write("")
         return render_template('playerEntry.html')
 
 @app.route('/red_submit', methods = ['GET','POST'])
@@ -69,6 +73,34 @@ def submit_2():
 @app.route('/action',methods=['GET', 'POST'])
 def playerAction():
     return render_template('playAction.html')
+
+@app.route('/set_string',methods=['GET', 'POST'])
+def redSet():
+    if request.method == 'POST':
+        print (request.data)
+        with open("files/rednames.txt", "w") as fo:
+            fo.write(request.data.decode("utf-8"))
+        return "hi lol"
+
+@app.route('/set_string_green',methods=['GET', 'POST'])
+def greenSet():
+    if request.method == 'POST':
+        print (request.data)
+        with open("files/greennames.txt", "w") as fo:
+            fo.write(request.data.decode("utf-8"))
+        return "hi lol"
+
+@app.route('/rednames',methods=['GET', 'POST'])
+def redPull():
+    with app.open_resource("files/rednames.txt") as f:
+        content = f.read()
+    return content
+
+@app.route('/greennames',methods=['GET', 'POST'])
+def greenPull():
+    with app.open_resource("files/greennames.txt") as f:
+        content = f.read()
+    return content
 
 
 
