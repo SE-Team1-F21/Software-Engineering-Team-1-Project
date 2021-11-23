@@ -5,7 +5,28 @@ from flask import jsonify
 from flask.signals import request_started
 from middleHandler import connection
 
+
+
+import socket
+
+
 #http://127.0.0.1:5000/ 
+
+# def loadSocket():
+ip = "127.0.0.1"
+port = 7501
+sock = socket.socket(socket.AF_INET,
+                    socket.SOCK_DGRAM)
+sock.bind((ip, port))
+
+
+
+# loadSocket()
+
+
+
+
+
 
 app = Flask(__name__)
 
@@ -16,6 +37,8 @@ def home():
 
 @app.route('/game', methods=['GET', 'POST'])
 def game():
+    
+    
     if request.method == 'GET':
         print ("print should work")
         with open("files/rednames.txt", "w") as fo:
@@ -70,9 +93,16 @@ def submit_2():
         dataReply = {'this':'works'}
         return jsonify(dataReply)
 
+
+##LOOK HERE!!!!!!!
 @app.route('/action',methods=['GET', 'POST'])
 def playerAction():
-    return render_template('playAction.html')
+    print(f'Start listening to {ip}:{port}')
+    while True:
+        data, addr = sock.recvfrom(1024) # buffer
+        print(f"received message: {data}")
+        break
+    return render_template('playAction.html',name = data)
 
 @app.route('/set_string',methods=['GET', 'POST'])
 def redSet():
