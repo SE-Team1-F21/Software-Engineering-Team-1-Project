@@ -31,7 +31,7 @@
             </h2>
             <div class="redScores">
                 <div class="redNameGroup">
-                    <div class="redList" id="rName1">{{name}}</div>
+                    <div class="redList" id="rName1">Scobby</div>
                     <div class="redList" id="rName2">Diego</div>
                     <div class="redList" id="rName3"></div>
                     <div class="redList" id="rName4"></div>
@@ -125,20 +125,15 @@
                 </div>
             </div>
             <div class="score1" id="redScore">
-                100
+                0
             </div>
             <div class="score2" id="greenScore">
-                400
+                0
             </div>
             
             <div class=border-square2>
                 <h5>Current Game Action</h5>
-                <div class=hits>
-                    Scooby hit Opus<br>Opus hit Scooby<br>Diego hit himself
-
-
-
-                    
+                <div class="hits" id="screenHits">
                 </div>
             </div>
             <h3 id = "timer">
@@ -172,35 +167,71 @@
 		
     </script>
 
-<script>
-    var request = new XMLHttpRequest();
-    request.open('GET','rednames', true);
-    request.onload = function() {
-        var response = request.response;
-        const redArray = response.split(",");
-        for(let i = 1; i <= redArray.length -1; i++) 
+    <script>
+        var redArr = [];
+        var greenArr = [];
+
+
+        var request = new XMLHttpRequest();
+        request.open('GET','rednames', true);
+        request.onload = function() {
+            var response = request.response;
+            const redArray = response.split(",");
+            redArr = redArray;
+            for(let i = 1; i <= redArray.length -1; i++) 
+            {
+                document.getElementById("rName" + i).innerHTML = redArray[i-1];
+                document.getElementById("rScore" + i).innerHTML = 0;
+            }
+
+        }
+        request.send(null);
+
+        var request2 = new XMLHttpRequest();
+        request2.open('GET','greennames', true);
+        request2.onload = function() {
+            var response2 = request2.response;
+            const greenArray = response2.split(",");
+            greenArr = greenArray;
+            for(let i = 1; i <= greenArray.length -1; i++) 
+            {
+                document.getElementById("gName" + i).innerHTML = greenArray[i-1];
+                document.getElementById("gScore" + i).innerHTML = 0;
+            }
+
+        }
+        request2.send(null);
+
+        function getHits()
         {
-            document.getElementById("rName" + i).innerHTML = redArray[i-1];
-            document.getElementById("rScore" + i).innerHTML = 0;
+            var request = new XMLHttpRequest();
+            request.open('GET','receive', true);
+            request.onload = function() {
+                var response = request.response;
+                const dataArray = response.split(":");
+       
+                if(dataArray[0] == 'r')
+                {
+                    document.getElementById("screenHits").innerHTML = document.getElementById("screenHits").innerHTML + redArr[dataArray[1]-1] + " hit " + greenArr[dataArray[2]-1] + "<br>";
+                    document.getElementById("rScore" + (dataArray[1])).innerHTML = parseInt(document.getElementById("rScore" + (dataArray[1])).innerHTML) + 100;
+                    document.getElementById("redScore").innerHTML = parseInt(document.getElementById("redScore").innerHTML) + 100;
+                }
+                else
+                {
+                    document.getElementById("screenHits").innerHTML = document.getElementById("screenHits").innerHTML + greenArr[dataArray[1]-1] + " hit " + redArr[dataArray[2]-1] + "<br>";
+                    document.getElementById("gScore" + (dataArray[1])).innerHTML = parseInt(document.getElementById("gScore" + (dataArray[1])).innerHTML) + 100;
+                    document.getElementById("greenScore").innerHTML = parseInt(document.getElementById("greenScore").innerHTML) + 100;
+                }
+                
+                
+            }
+            request.send(null);
+
+            setTimeout(getHits, 5000);
         }
 
-    }
-    request.send(null);
+        getHits();
 
-    var request2 = new XMLHttpRequest();
-    request2.open('GET','greennames', true);
-    request2.onload = function() {
-        var response2 = request2.response;
-        const greenArray = response2.split(",");
-        for(let i = 1; i <= greenArray.length -1; i++) 
-        {
-            document.getElementById("gName" + i).innerHTML = greenArray[i-1];
-            document.getElementById("gScore" + i).innerHTML = 0;
-        }
-
-    }
-    request2.send(null);
-
-</script>
+    </script>
     
 </html>
