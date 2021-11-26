@@ -222,7 +222,9 @@
                     document.getElementById("gScore" + (dataArray[1])).innerHTML = parseInt(document.getElementById("gScore" + (dataArray[1])).innerHTML) + 100;
                     document.getElementById("greenScore").innerHTML = parseInt(document.getElementById("greenScore").innerHTML) + 100;
                 }
-                
+
+                var element = document.getElementById("screenHits");
+                element.scrollTop = element.scrollHeight;                
                 
             }
             request.send(null);
