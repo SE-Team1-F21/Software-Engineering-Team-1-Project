@@ -5,7 +5,8 @@ from flask import jsonify
 from flask.signals import request_started
 from middleHandler import connection
 from python_udpserver import listen
-#from python_trafficgenerator import generate
+import subprocess
+import os
 
 #http://127.0.0.1:5000/ 
 
@@ -74,7 +75,9 @@ def submit_2():
 
 @app.route('/action',methods=['GET', 'POST'])
 def playerAction():
-    #generate()
+    cmd_line = 'python3 python_trafficgenerator.py' 
+    p = subprocess.Popen(cmd_line, cwd=os.path.dirname(os.path.realpath(__file__)), shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    
     return render_template('playAction.html')
 
 @app.route('/set_string',methods=['GET', 'POST'])
