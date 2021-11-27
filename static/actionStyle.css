@@ -68,7 +68,7 @@ h2 {
 
 h3 {
     position: absolute;
-    right: 15%;
+    right: 15px;
     bottom: -22px;
     color: rgb(245, 245, 245);
     font-size: 35px;
@@ -95,6 +95,14 @@ h5 {
     font-style: italic;
 }
 
+h6 {
+    position: absolute;
+    left: 15px;
+    bottom: -68px;
+    color: rgb(245, 245, 245);
+    font-size: 35px;
+}
+
 .hits {
     position: absolute;
     left: 6px;
@@ -108,7 +116,7 @@ h5 {
 
 .score1 {
     position: absolute;
-    left: calc(10% + 220px);
+    left: calc(44% + 20px);
     top: calc(40% - 50px);
     color: rgb(245, 8, 8);
     font-size: 35px;
