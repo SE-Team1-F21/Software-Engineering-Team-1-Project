@@ -150,6 +150,7 @@
         seconds = 30
     	var timer = setInterval(myCounter, 1000);
         var inGame = false;
+        var gameOver = false;
         var redArr = [];
         var greenArr = [];
 
@@ -177,7 +178,8 @@
                 else
                 {
                     document.getElementById("timer").innerHTML = "Game Over!";
-                    document.getElementById("phaseState").innerHTML = "";
+                    document.getElementById("phaseState").innerHTML = "Press Enter to return to player entry screen";
+                    gameOver = true;
                     stopFunction();
                 }                
             }
@@ -231,12 +233,35 @@
                     document.getElementById("screenHits").innerHTML = document.getElementById("screenHits").innerHTML + "<span style='color: rgb(245, 8, 8);'>" + redArr[dataArray[1]-1] + "</span>" + " hit " + "<span style='color: rgb(11, 241, 80);'>" + greenArr[dataArray[2]-1] + "</span>" + "<br>";
                     document.getElementById("rScore" + (dataArray[1])).innerHTML = parseInt(document.getElementById("rScore" + (dataArray[1])).innerHTML) + 100;
                     document.getElementById("redScore").innerHTML = parseInt(document.getElementById("redScore").innerHTML) + 100;
+
+                    if(parseInt(document.getElementById("redScore").innerHTML) > parseInt(document.getElementById("greenScore").innerHTML))
+                    {
+                        document.getElementById("redScore").style.webkitTextStrokeWidth = "1px";  
+                        document.getElementById("greenScore").style.webkitTextStrokeWidth = "0px";    
+                    }
+                    else if(parseInt(document.getElementById("redScore").innerHTML) == parseInt(document.getElementById("greenScore").innerHTML))
+                    {
+                        document.getElementById("redScore").style.webkitTextStrokeWidth = "0px";
+                        document.getElementById("greenScore").style.webkitTextStrokeWidth = "0px";         
+                    }
+
                 }
                 else
                 {
                     document.getElementById("screenHits").innerHTML = document.getElementById("screenHits").innerHTML + "<span style='color: rgb(11, 241, 80);'>" + greenArr[dataArray[1]-1] + "</span>" + " hit " + "<span style='color: rgb(245, 8, 8);'>" + redArr[dataArray[2]-1] +"</span>" + "<br>";
                     document.getElementById("gScore" + (dataArray[1])).innerHTML = parseInt(document.getElementById("gScore" + (dataArray[1])).innerHTML) + 100;
                     document.getElementById("greenScore").innerHTML = parseInt(document.getElementById("greenScore").innerHTML) + 100;
+
+                    if(parseInt(document.getElementById("greenScore").innerHTML) > parseInt(document.getElementById("redScore").innerHTML))
+                    {
+                        document.getElementById("greenScore").style.webkitTextStrokeWidth = "1px";  
+                        document.getElementById("redScore").style.webkitTextStrokeWidth = "0px";    
+                    }
+                    else if(parseInt(document.getElementById("greenScore").innerHTML) == parseInt(document.getElementById("redScore").innerHTML))
+                    {
+                        document.getElementById("redScore").style.webkitTextStrokeWidth = "0px";
+                        document.getElementById("greenScore").style.webkitTextStrokeWidth = "0px";         
+                    }
                 }
 
                 var element = document.getElementById("screenHits");
@@ -245,11 +270,23 @@
             }
             request.send(null);
 
-            setTimeout(getHits, 5000);
+            setTimeout(getHits, 3000);
         }
-
         
         getHits();
+
+        function actionSwitch() {
+            window.location.replace("http://127.0.0.1:5000/game");
+	    }
+
+        document.addEventListener("keypress", function(event) {
+		if (event.key === "Enter") {
+            if(gameOver)
+            {
+                actionSwitch();
+            }
+		}
+	});
         
         
 
