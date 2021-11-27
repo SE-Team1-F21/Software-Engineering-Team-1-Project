@@ -31,8 +31,8 @@
             </h2>
             <div class="redScores">
                 <div class="redNameGroup">
-                    <div class="redList" id="rName1">Scobby</div>
-                    <div class="redList" id="rName2">Diego</div>
+                    <div class="redList" id="rName1"></div>
+                    <div class="redList" id="rName2"></div>
                     <div class="redList" id="rName3"></div>
                     <div class="redList" id="rName4"></div>
                     <div class="redList" id="rName5"></div>
@@ -53,8 +53,8 @@
                     <div class="redList" id="rName20"></div>
                 </div>
                 <div class="redScoreGroup">
-                    <div class="redList" id="rScore1">200</div>
-                    <div class="redList" id="rScore2">-100</div>
+                    <div class="redList" id="rScore1"></div>
+                    <div class="redList" id="rScore2"></div>
                     <div class="redList" id="rScore3"></div>
                     <div class="redList" id="rScore4"></div>
                     <div class="redList" id="rScore5"></div>
@@ -80,7 +80,7 @@
             </h4>
             <div class="greenScores">
                 <div class="greenNameGroup">
-                    <div class="greenList" id="gName1">Opus</div>
+                    <div class="greenList" id="gName1"></div>
                     <div class="greenList" id="gName2"></div>
                     <div class="greenList" id="gName3"></div>
                     <div class="greenList" id="gName4"></div>
@@ -102,7 +102,7 @@
                     <div class="greenList" id="gName20"></div>
                 </div>
                 <div class="greenScoreGroup">
-                    <div class="greenList" id="gScore1">400</div>
+                    <div class="greenList" id="gScore1"></div>
                     <div class="greenList" id="gScore2"></div>
                     <div class="greenList" id="gScore3"></div>
                     <div class="greenList" id="gScore4"></div>
@@ -139,6 +139,9 @@
             <h3 id = "timer">
                 Time Remaining: 30 Seconds
             </h3>
+            <h6 id = "phaseState">
+                Preparation Phase
+            </h6>
         </div>
     
     </body>
@@ -146,16 +149,37 @@
     <script>
         seconds = 30
     	var timer = setInterval(myCounter, 1000);
+        var inGame = false;
+        var redArr = [];
+        var greenArr = [];
 
         function myCounter()
         {
-            document.getElementById("timer").innerHTML = "Time Remaining: " + seconds + " Seconds";
+            if(seconds < 60)
+            {
+                document.getElementById("timer").innerHTML = "Time Remaining: " + seconds + " Seconds";
+            }
+            else
+            {
+                document.getElementById("timer").innerHTML = "Time Remaining: " + Math.floor(seconds/60) + " Minutes " + (seconds - (60 * Math.floor(seconds/60))) + " Seconds";
+            }
+
             seconds --;
+
             if(seconds < 0)
             {
-                stopFunction();
-                document.getElementById("timer").innerHTML = "Time Remaining: NONE!";
-                
+                if(!inGame)
+                {
+                    seconds = 360;
+                    inGame = true;
+                    document.getElementById("phaseState").innerHTML = "In-Game Phase";
+                }
+                else
+                {
+                    document.getElementById("timer").innerHTML = "Game Over!";
+                    document.getElementById("phaseState").innerHTML = "";
+                    stopFunction();
+                }                
             }
         }
 
@@ -163,14 +187,6 @@
         {
             clearInterval(timer);
         }
-
-		
-    </script>
-
-    <script>
-        var redArr = [];
-        var greenArr = [];
-
 
         var request = new XMLHttpRequest();
         request.open('GET','rednames', true);
@@ -212,19 +228,19 @@
        
                 if(dataArray[0] == 'r')
                 {
-                    document.getElementById("screenHits").innerHTML = document.getElementById("screenHits").innerHTML + redArr[dataArray[1]-1] + " hit " + greenArr[dataArray[2]-1] + "<br>";
+                    document.getElementById("screenHits").innerHTML = document.getElementById("screenHits").innerHTML + "<span style='color: rgb(245, 8, 8);'>" + redArr[dataArray[1]-1] + "</span>" + " hit " + "<span style='color: rgb(11, 241, 80);'>" + greenArr[dataArray[2]-1] + "</span>" + "<br>";
                     document.getElementById("rScore" + (dataArray[1])).innerHTML = parseInt(document.getElementById("rScore" + (dataArray[1])).innerHTML) + 100;
                     document.getElementById("redScore").innerHTML = parseInt(document.getElementById("redScore").innerHTML) + 100;
                 }
                 else
                 {
-                    document.getElementById("screenHits").innerHTML = document.getElementById("screenHits").innerHTML + greenArr[dataArray[1]-1] + " hit " + redArr[dataArray[2]-1] + "<br>";
+                    document.getElementById("screenHits").innerHTML = document.getElementById("screenHits").innerHTML + "<span style='color: rgb(11, 241, 80);'>" + greenArr[dataArray[1]-1] + "</span>" + " hit " + "<span style='color: rgb(245, 8, 8);'>" + redArr[dataArray[2]-1] +"</span>" + "<br>";
                     document.getElementById("gScore" + (dataArray[1])).innerHTML = parseInt(document.getElementById("gScore" + (dataArray[1])).innerHTML) + 100;
                     document.getElementById("greenScore").innerHTML = parseInt(document.getElementById("greenScore").innerHTML) + 100;
                 }
 
                 var element = document.getElementById("screenHits");
-                element.scrollTop = element.scrollHeight;                
+                element.scrollTop = element.scrollHeight;  //maybe do if not scrolled all the way to the bottom, stay where it's at but if at bottom, scroll to new bottom like other apps
                 
             }
             request.send(null);
@@ -232,7 +248,10 @@
             setTimeout(getHits, 5000);
         }
 
+        
         getHits();
+        
+        
 
     </script>
     
