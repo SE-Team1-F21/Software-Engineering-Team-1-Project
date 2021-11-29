@@ -171,14 +171,14 @@
             {
                 if(!inGame)
                 {
-                    seconds = 360;
+                    seconds = 10;
                     inGame = true;
                     document.getElementById("phaseState").innerHTML = "In-Game Phase";
                 }
                 else
                 {
                     document.getElementById("timer").innerHTML = "Game Over!";
-                    document.getElementById("phaseState").innerHTML = "Press Enter to return to player entry screen";
+                    document.getElementById("phaseState").innerHTML = "Press Enter for entry screen";
                     gameOver = true;
                     stopFunction();
                 }                
@@ -222,53 +222,56 @@
 
         function getHits()
         {
-            var request = new XMLHttpRequest();
-            request.open('GET','receive', true);
-            request.onload = function() {
-                var response = request.response;
-                const dataArray = response.split(":");
-       
-                if(dataArray[0] == 'r')
-                {
-                    document.getElementById("screenHits").innerHTML = document.getElementById("screenHits").innerHTML + "<span style='color: rgb(245, 8, 8);'>" + redArr[dataArray[1]-1] + "</span>" + " hit " + "<span style='color: rgb(11, 241, 80);'>" + greenArr[dataArray[2]-1] + "</span>" + "<br>";
-                    document.getElementById("rScore" + (dataArray[1])).innerHTML = parseInt(document.getElementById("rScore" + (dataArray[1])).innerHTML) + 100;
-                    document.getElementById("redScore").innerHTML = parseInt(document.getElementById("redScore").innerHTML) + 100;
-
-                    if(parseInt(document.getElementById("redScore").innerHTML) > parseInt(document.getElementById("greenScore").innerHTML))
+            if(inGame && !gameOver)
+            {
+                var request = new XMLHttpRequest();
+                request.open('GET','receive', true);
+                request.onload = function() {
+                    var response = request.response;
+                    const dataArray = response.split(":");
+        
+                    if(dataArray[0] == 'r')
                     {
-                        document.getElementById("redScore").style.webkitTextStrokeWidth = "1px";  
-                        document.getElementById("greenScore").style.webkitTextStrokeWidth = "0px";    
+                        document.getElementById("screenHits").innerHTML = document.getElementById("screenHits").innerHTML + "<span style='color: rgb(245, 8, 8);'>" + redArr[dataArray[1]-1] + "</span>" + " hit " + "<span style='color: rgb(11, 241, 80);'>" + greenArr[dataArray[2]-1] + "</span>" + "<br>";
+                        document.getElementById("rScore" + (dataArray[1])).innerHTML = parseInt(document.getElementById("rScore" + (dataArray[1])).innerHTML) + 100;
+                        document.getElementById("redScore").innerHTML = parseInt(document.getElementById("redScore").innerHTML) + 100;
+
+                        if(parseInt(document.getElementById("redScore").innerHTML) > parseInt(document.getElementById("greenScore").innerHTML))
+                        {
+                            document.getElementById("redScore").style.webkitTextStrokeWidth = "1px";  
+                            document.getElementById("greenScore").style.webkitTextStrokeWidth = "0px";    
+                        }
+                        else if(parseInt(document.getElementById("redScore").innerHTML) == parseInt(document.getElementById("greenScore").innerHTML))
+                        {
+                            document.getElementById("redScore").style.webkitTextStrokeWidth = "0px";
+                            document.getElementById("greenScore").style.webkitTextStrokeWidth = "0px";         
+                        }
+
                     }
-                    else if(parseInt(document.getElementById("redScore").innerHTML) == parseInt(document.getElementById("greenScore").innerHTML))
+                    else
                     {
-                        document.getElementById("redScore").style.webkitTextStrokeWidth = "0px";
-                        document.getElementById("greenScore").style.webkitTextStrokeWidth = "0px";         
+                        document.getElementById("screenHits").innerHTML = document.getElementById("screenHits").innerHTML + "<span style='color: rgb(11, 241, 80);'>" + greenArr[dataArray[1]-1] + "</span>" + " hit " + "<span style='color: rgb(245, 8, 8);'>" + redArr[dataArray[2]-1] +"</span>" + "<br>";
+                        document.getElementById("gScore" + (dataArray[1])).innerHTML = parseInt(document.getElementById("gScore" + (dataArray[1])).innerHTML) + 100;
+                        document.getElementById("greenScore").innerHTML = parseInt(document.getElementById("greenScore").innerHTML) + 100;
+
+                        if(parseInt(document.getElementById("greenScore").innerHTML) > parseInt(document.getElementById("redScore").innerHTML))
+                        {
+                            document.getElementById("greenScore").style.webkitTextStrokeWidth = "1px";  
+                            document.getElementById("redScore").style.webkitTextStrokeWidth = "0px";    
+                        }
+                        else if(parseInt(document.getElementById("greenScore").innerHTML) == parseInt(document.getElementById("redScore").innerHTML))
+                        {
+                            document.getElementById("redScore").style.webkitTextStrokeWidth = "0px";
+                            document.getElementById("greenScore").style.webkitTextStrokeWidth = "0px";         
+                        }
                     }
 
+                    var element = document.getElementById("screenHits");
+                    element.scrollTop = element.scrollHeight;  //maybe do if not scrolled all the way to the bottom, stay where it's at but if at bottom, scroll to new bottom like other apps
+                    
                 }
-                else
-                {
-                    document.getElementById("screenHits").innerHTML = document.getElementById("screenHits").innerHTML + "<span style='color: rgb(11, 241, 80);'>" + greenArr[dataArray[1]-1] + "</span>" + " hit " + "<span style='color: rgb(245, 8, 8);'>" + redArr[dataArray[2]-1] +"</span>" + "<br>";
-                    document.getElementById("gScore" + (dataArray[1])).innerHTML = parseInt(document.getElementById("gScore" + (dataArray[1])).innerHTML) + 100;
-                    document.getElementById("greenScore").innerHTML = parseInt(document.getElementById("greenScore").innerHTML) + 100;
-
-                    if(parseInt(document.getElementById("greenScore").innerHTML) > parseInt(document.getElementById("redScore").innerHTML))
-                    {
-                        document.getElementById("greenScore").style.webkitTextStrokeWidth = "1px";  
-                        document.getElementById("redScore").style.webkitTextStrokeWidth = "0px";    
-                    }
-                    else if(parseInt(document.getElementById("greenScore").innerHTML) == parseInt(document.getElementById("redScore").innerHTML))
-                    {
-                        document.getElementById("redScore").style.webkitTextStrokeWidth = "0px";
-                        document.getElementById("greenScore").style.webkitTextStrokeWidth = "0px";         
-                    }
-                }
-
-                var element = document.getElementById("screenHits");
-                element.scrollTop = element.scrollHeight;  //maybe do if not scrolled all the way to the bottom, stay where it's at but if at bottom, scroll to new bottom like other apps
-                
+                request.send(null);
             }
-            request.send(null);
 
             setTimeout(getHits, 3000);
         }
