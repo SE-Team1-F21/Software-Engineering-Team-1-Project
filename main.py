@@ -12,6 +12,8 @@ import os
 
 app = Flask(__name__)
 
+p = None
+
 @app.route("/")
 def home():
     return render_template('splash.html')
@@ -19,6 +21,8 @@ def home():
 
 @app.route('/game', methods=['GET', 'POST'])
 def game():
+    if(p is not None):
+        p.kill()
     if request.method == 'GET':
         print ("print should work")
         with open("files/rednames.txt", "w") as fo:
@@ -75,8 +79,9 @@ def submit_2():
 
 @app.route('/action',methods=['GET', 'POST'])
 def playerAction():
+    global p
     cmd_line = 'python3 python_trafficgenerator.py' 
-    p = subprocess.Popen(cmd_line, cwd=os.path.dirname(os.path.realpath(__file__)), shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    p = subprocess.Popen(cmd_line, cwd=os.path.dirname(os.path.realpath(__file__)), stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     
     return render_template('playAction.html')
 
