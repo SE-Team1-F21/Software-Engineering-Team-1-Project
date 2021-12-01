@@ -31,6 +31,7 @@ body {
     border-width: 2px;
     border-radius: 15px 15px 0px 0px;
     border-color: rgb(252, 255, 53);
+    
 }
 
 .xp {
@@ -67,7 +68,7 @@ h2 {
 
 h3 {
     position: absolute;
-    right: 15%;
+    right: 15px;
     bottom: -22px;
     color: rgb(245, 245, 245);
     font-size: 35px;
@@ -83,6 +84,7 @@ h4 {
 
 h5 {
     position: absolute;
+    overflow-y: hidden;
     right: 10%;
     top: -82px;
     color: rgb(169, 249, 255);
@@ -93,20 +95,32 @@ h5 {
     font-style: italic;
 }
 
-.hits {
+h6 {
     position: absolute;
-    left: 6px;
-    top: 3px;
+    left: 15px;
+    bottom: -68px;
     color: rgb(245, 245, 245);
     font-size: 35px;
 }
 
+.hits {
+    position: absolute;
+    left: 6px;
+    height: 100%;
+    width: calc(100% - 6px);
+    top: 0px;
+    color: rgb(245, 245, 245);
+    font-size: 35px;
+    overflow-y: auto;
+}
+
 .score1 {
     position: absolute;
-    left: calc(10% + 220px);
+    left: calc(44% + 20px);
     top: calc(40% - 50px);
     color: rgb(245, 8, 8);
     font-size: 35px;
+    -webkit-text-stroke-color: rgb(255, 255, 255);
 }
 
 .score2 {
@@ -115,6 +129,7 @@ h5 {
     top: calc(40% - 50px);
     color: rgb(11, 241, 80);
     font-size: 35px;
+    -webkit-text-stroke-color: rgb(255, 255, 255);
 }
 
 .redScores {
@@ -140,6 +155,7 @@ h5 {
     position: absolute;
     top: 0;
     right: 10px;
+    text-align: right;
 }
 
 .redList {
@@ -171,6 +187,7 @@ h5 {
     position: absolute;
     top: 0;
     right: 10px;
+    text-align: right;
 }
 
 .greenList {
