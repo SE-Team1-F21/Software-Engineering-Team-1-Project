@@ -169,6 +169,12 @@
     <script>
         let idString = "";
         let nameString = "";
+        let redCheck = false;
+        let redArr = [];
+        let redIDArr = [];
+        let greenCheck = false;
+        let greenArr = [];
+        let greenIDArr = [];
 
         function getValues()
         {
@@ -194,6 +200,7 @@
         
         function getRedID()
         {
+            let playerIDs = "";
             formID = document.getElementsByClassName("redFormID");
             const id = idString.split(",");
             const name = nameString.split(",");
@@ -209,13 +216,46 @@
                     }
                 }
             }
+
+            for(let i = 0; i < formID.length; i++)
+           {
+               if(formID[i].value != "") {
+                playerIDs += formID[i].value + ",";
+               }               
+           }
+
+           redIDArr = playerIDs.split(',');
+
+            for(let i = 0; i < formID.length; i++)
+            {
+                for(let k = 0; k < formID.length; k++)
+                {
+                    if(formID[i].value == formID[k].value && formID[i].value != "" && i != k)
+                    {
+                        var x = document.getElementById("redName" + (k+1));
+                        x.value = "";
+                        var x = document.getElementById("redID" + (k+1));
+                        x.value = "";
+                    }
+                }
+            }
         }
 
         function getGreenID()
         {
+            let playerIDs = "";
             formID = document.getElementsByClassName("greenFormID");
             const id = idString.split(",");
             const name = nameString.split(",");
+
+            for(let i = 0; i < formID.length; i++)
+            {
+               if(formID[i].value != "") {
+                playerIDs += formID[i].value + ",";
+               }               
+            }
+
+           greenIDArr = playerIDs.split(',');
 
             for(let i = 0; i < formID.length; i++)
             {
@@ -225,6 +265,20 @@
                     {
                         var x = document.getElementById("greenName" + (i+1));
                         x.value = name[k];
+                    }
+                }
+            }
+
+            for(let i = 0; i < formID.length; i++)
+            {
+                for(let k = 0; k < formID.length; k++)
+                {
+                    if(formID[i].value == formID[k].value && formID[i].value != "" && i != k)
+                    {
+                        var x = document.getElementById("greenName" + (k+1));
+                        x.value = "";
+                        var x = document.getElementById("greenID" + (k+1));
+                        x.value = "";
                     }
                 }
             }
@@ -242,10 +296,20 @@
                }               
            }
 
+           if(players != "")
+           {
+               redCheck = true;
+               redArr = players.split(',');
+           }
+           else
+           {
+               redCheck = false;
+           }
+
            request = new XMLHttpRequest();
 
-            request.open("POST",'set_string', true)
-            request.send(players);
+           request.open("POST",'set_string', true)
+           request.send(players);
 
         }
 
@@ -261,10 +325,20 @@
                }               
            }
 
+           if(players != "")
+           {
+               greenCheck = true; 
+               greenArr = players.split(',');
+           }
+           else
+           {
+               greenCheck = false;
+           }
+
            request = new XMLHttpRequest();
 
-            request.open("POST",'set_string_green', true)
-            request.send(players);
+           request.open("POST",'set_string_green', true)
+           request.send(players);
 
         }
 
@@ -342,14 +416,47 @@
            request.send(dataSend)
 
         }
+
+    function errorCheck() {
+        if(!redCheck)
+        {
+            alert("Error, the red team is empty. Please submit at least one member.")
+            return false;
+        }       
+        if(!greenCheck)
+        {
+            alert("Error, the green team is empty. Please submit at least one member.")
+            return false;
+        }
+
+        for(let i = 0; i < redArr.length-1; i++)
+        {
+            for(let k = 0; k < greenArr.length-1; k++)
+            {
+                if(redArr[i] == greenArr[k])
+                {
+                    if(redIDArr[i] == greenIDArr[k])
+                    {
+                        alert("Error, " + redArr[i] + " is on both teams. Please remove him/her from one of the teams and click submit.");
+                        return false;
+                    }
+                }
+            }
+        }        
+
+        return true;
+    }
 		
 	function actionSwitch() {
-		window.location.replace("http://127.0.0.1:5000/action");
+        window.location.replace("http://127.0.0.1:5000/action");
 	}
 		
 	document.addEventListener("keypress", function(event) {
 		if (event.key === "Enter") {
-			actionSwitch();
+            if(errorCheck())
+            {
+                actionSwitch();
+            }
 		}
 	});
 		
