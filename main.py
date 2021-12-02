@@ -6,9 +6,7 @@ from flask.signals import request_started
 from middleHandler import connection
 from python_udpserver import listen
 import subprocess
-import os, signal
-import sys
-from sys import platform
+import os
 
 #http://127.0.0.1:5000/ 
 
@@ -24,8 +22,7 @@ def home():
 @app.route('/game', methods=['GET', 'POST'])
 def game():
     if(p is not None):
-        # p.kill()
-        os.kill(test, signal.SIGSTOP)
+        p.kill()
     if request.method == 'GET':
         print ("print should work")
         with open("files/rednames.txt", "w") as fo:
@@ -83,12 +80,9 @@ def submit_2():
 @app.route('/action',methods=['GET', 'POST'])
 def playerAction():
     global p
-    global test
-    cmd_line = 'python python_trafficgenerator.py' 
-    p = os.popen(cmd_line)
-    test = os.fork()
+    cmd_line = ['python', 'python_trafficgenerator.py'] 
+    p = subprocess.Popen(cmd_line, cwd=os.path.dirname(os.path.realpath(__file__)), stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     
-
     return render_template('playAction.html')
 
 @app.route('/set_string',methods=['GET', 'POST'])
