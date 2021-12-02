@@ -147,7 +147,7 @@
     </body>
 
     <script>
-        seconds = 5
+        seconds = 30
     	var timer = setInterval(myCounter, 1000);
         var inGame = false;
         var gameOver = false;
@@ -171,7 +171,7 @@
             {
                 if(!inGame)
                 {
-                    seconds = 5;
+                    seconds = 360;
                     inGame = true;
                     document.getElementById("phaseState").innerHTML = "In-Game Phase";
                 }
@@ -285,7 +285,7 @@
         getHits();
 
         function actionSwitch() {
-            window.location.replace("http://127.0.0.1:5000/game");
+            window.location.replace("http://127.0.0.1:5000/");
 	    }
 
         document.addEventListener("keypress", function(event) {
