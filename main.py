@@ -7,7 +7,6 @@ from middleHandler import connection
 from python_udpserver import listen
 import subprocess
 import os
-from sys import platform
 
 #http://127.0.0.1:5000/ 
 
@@ -81,9 +80,9 @@ def submit_2():
 @app.route('/action',methods=['GET', 'POST'])
 def playerAction():
     global p
-    cmd_line = 'python3 python_trafficgenerator.py' 
-    p = os.popen(cmd_line)
-
+    cmd_line = ['python', 'python_trafficgenerator.py'] 
+    p = subprocess.Popen(cmd_line, cwd=os.path.dirname(os.path.realpath(__file__)), stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    
     return render_template('playAction.html')
 
 @app.route('/set_string',methods=['GET', 'POST'])
