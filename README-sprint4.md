@@ -1,3 +1,4 @@
+
 # <center> Sprint 4
 
 
@@ -23,20 +24,10 @@ https://github.com/SE-Team1-F21/Software-Engineering-Team-1-Project
 **<center> Player Entry**
 ![entry](images/entry.png)
 
-
-
-
-
-
-
-
-
 **<center> Preparation Phase-playAction**
 
 
 ![prep]('/../images/preparation%20phase.png)
-
-
 
 **In Game Phase Point Deductions -playAction**
 ![game](/images/In-game%20phase%20I.png)
@@ -46,5 +37,3 @@ https://github.com/SE-Team1-F21/Software-Engineering-Team-1-Project
 
 **Game over phase**
 ![gameOver](images/Game%20over.png)
-
-
